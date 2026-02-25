@@ -26,7 +26,7 @@
  *   Signal Jumping: 150
  *   Illegal Parking: 50
  * - The program must use a switch statement to process the violation type.
- *   
+ *
  * Example:
  * Input:
  * Enter violation type (1-Speeding, 2-Signal Jumping, 3-Illegal Parking): 1
@@ -37,13 +37,15 @@
  * Repeat offense: Yes
  * Fine amount: 200.00
  */
- 
- #include <stdio.h>
 
-int main(void) {
+#include <stdio.h>
+
+int main(void)
+{
     int violation_type;
     int repeat_offense;
     float fine = 0.0;
+    char *violation_name;
 
     printf("Enter violation type (1-Speeding, 2-Signal Jumping, 3-Illegal Parking): ");
     scanf("%d", &violation_type);
@@ -52,24 +54,38 @@ int main(void) {
     scanf("%d", &repeat_offense);
 
     /* subtask 1: Determine base fine using switch */
-	// Complete your code here
-    switch (violation_type) {
-        case 1:
-            break;
-
-        default:
-            printf("Invalid violation type\n");
-            return 1;
+    // Complete your code here
+    switch (violation_type)
+    {
+    case 1:
+        fine = 100.0;
+        violation_name = "Speeding";
+        break;
+    case 2:
+        fine = 150.0;
+        violation_name = "Signal Jumping";
+        break;
+    case 3:
+        fine = 50.0;
+        violation_name = "Illegal Parking";
+        break;
+    default:
+        printf("Invalid violation type\n");
+        return 1;
     }
 
     /* subtask 2: Apply repeat offense penalty */
-	// Complete your code here
-	
-	if (repeat_offense == 1) {
-		// todo
-	}
+    // Complete your code here
+
+    if (repeat_offense == 1)
+    {
+        fine = fine * 2;
+        // todo
+    }
 
     /* Output final fine */
+    printf("Violation: %s\n", violation_name);
+    printf("Repeat offense: %s\n", repeat_offense ? "Yes" : "No");
     printf("Fine amount: %.2f\n", fine);
 
     return 0;

@@ -40,13 +40,15 @@
  * Total bill amount: 725.00
  *
  */
- 
+
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     float units;
     float bill = 0.0;
     int customerType;
+    char *customertypename;
 
     printf("Enter units consumed: ");
     scanf("%f", &units);
@@ -55,25 +57,48 @@ int main(void) {
     scanf("%d", &customerType);
 
     /* subtask 1: calculate base bill using slabs */
-	// complete your code here
-    if (units <= 100) {
+    // complete your code here
+    if (units <= 100)
+    {
         bill = units * 2.0;
-		// to do
     }
 
-    /* subtask 2: apply surcharge based on customer type */
-	// complete your code here
-    switch (customerType) {
-        case 1:
-            // to do
-			break;
+    else if (units <= 300)
 
-        default:
-            printf("Invalid customer type\n");
-            return 1;
+    {
+        bill = (units - 100) * 3.5 + (100 * 2);
+    }
+    else
+    {
+        bill = (units - 300) * 5 + (200 * 3.5) + (100 * 2);
+    }
+    // to do
+
+    /* subtask 2: apply surcharge based on customer type */
+    // complete your code here
+    switch (customerType)
+    {
+    case 1:
+        customertypename = "Domestic";
+        // to do
+        break;
+    case 2:
+        customertypename = "Commercial";
+        bill = (bill * 0.1) + bill;
+        break;
+
+    case 3:
+        customertypename = "Industrial";
+        bill = (bill * 0.2) + bill;
+        break;
+
+    default:
+        printf("Invalid customer type\n");
+        return 1;
     }
 
     /* Output */
+    printf("Customer type: %s\n", customertypename);
     printf("Units consumed: %.2f\n", units);
     printf("Total bill amount: %.2f\n", bill);
 

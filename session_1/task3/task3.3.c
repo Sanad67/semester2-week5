@@ -14,10 +14,11 @@
  * - An integer representing the customer's credit score.
  *
  * Output:
- * - Print "Loan status: Rejected (Age not eligible)" for age less 
+ * - Print "Loan status: Rejected (Age not eligible)" for age less
  *   than 21 or greater than 80, and end the program.
  * - Print "Invalid loan type" for invalid loan type and exit the program.
- * - If loan approved, print 
+
+ * - If loan approved, print
  * 		Loan type: xxx
  * 		Loan status: xxx
  * 		Maximum loan amount: xxx
@@ -30,9 +31,9 @@
  *   Car Loan: Income ≥ 3000, Credit Score ≥ 650
  *   Personal Loan: Income ≥ 2000, Credit Score ≥ 600
  * - Max loan calculation:
-	 Car Loan: income * 20
-	 Home Loan: income * 60
-	 Personal Loan: income * 10
+     Car Loan: income * 20
+     Home Loan: income * 60
+     Personal Loan: income * 10
  *
  * Example:
  * Enter loan type (1-Home, 2-Car, 3-Personal): 2
@@ -45,17 +46,19 @@
  * Loan status: Approved
  * Maximum loan amount: 90000.00
  */
- 
+
 #include <stdio.h>
 #include <stdbool.h>
 
-int main(void) {
+int main(void)
+{
     int loan_type;
     int age;
     int credit_score;
     double income;
     double max_loan = 0.0;
     bool approved = false;
+    char *loan_name;
 
     /* Input */
     printf("Enter loan type (1-Home, 2-Car, 3-Personal): ");
@@ -71,27 +74,59 @@ int main(void) {
     scanf("%d", &credit_score);
 
     /* subtask1: Age eligibility check */
-	// Complete your code here
-
-
-
-    /* subtask 2: Loan-specific checks using switch*/
-	// Complete your code here
-    switch (loan_type) {
-        case 1:
-            break;
-
-        default:
-            printf("Invalid loan type\n");
-            return 1;
+    // Complete your code here 21 or greater than 80
+    if (age < 21 || age > 80)
+    {
+        printf("Loan status: Rejected (Age not eligible)\n");
+        return 1;
     }
 
+    /* subtask 2: Loan-specific checks using switch*/
+    // Complete your code here
+
+    switch (loan_type)
+    {
+    case 1:
+        if (income >= 5000 && credit_score >= 700)
+        {
+            max_loan = income * 60;
+            approved = true;
+        }
+        loan_name = "Home";
+        break;
+    case 2:
+        if (income >= 3000 && credit_score >= 650)
+        {
+            max_loan = income * 20;
+            approved = true;
+        }
+        loan_name = "Car";
+        break;
+    case 3:
+        if (income >= 2000 && credit_score >= 600)
+        {
+            max_loan = income * 10;
+            approved = true;
+        }
+        loan_name = "Personal";
+        break;
+
+    default:
+        printf("Invalid loan type\n");
+        return 1;
+    }
     /* subtask 3: Output result */
-	// Complete your code here
-	if (approved) {
-		// todo
-	}
-
-
+    // Complete your code here
+    if (approved)
+    {
+        printf("Loan type: %s\n", loan_name);
+        printf("Loan status: Approved \n");
+        printf("Maximum loan amount: %.2f\n", max_loan);
+    }
+    else
+    {
+        printf("Loan type: %s\n", loan_name);
+        printf("Loan status: Rejected (Criteria not met)\n");
+    }
     return 0;
 }
