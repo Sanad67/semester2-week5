@@ -2,7 +2,7 @@
 
 /* Task 2.3
  * Write a C program that perform the same function as the following Python program.
- 
+
 	Python program:
 	balance = 100.0
 
@@ -11,7 +11,7 @@
 	print("1. Check Balance")
 	print("2. Deposit Money")
 	print("3. Withdraw Money")
-	
+
 	choice = int(input("Enter your choice: "))
 
 	match choice:
@@ -35,17 +35,18 @@
 				print(f"Current balance: {balance:.2f}")
 			else:
 				print("Insufficient balance or invalid amount")
-		
+
 		case _:
 			print("Invalid choice. Please try again.")
  */
- 
+
 #include <stdio.h>
 
-int main(void) {
-    int choice;
-    double balance = 100.0;
-    double amount;
+int main(void)
+{
+	int choice;
+	double balance = 100.0;
+	double amount;
 
 	/* Display ATM menu */
 	printf("\nATM Menu\n");
@@ -56,12 +57,47 @@ int main(void) {
 	scanf("%d", &choice);
 
 	// complete the rest of the code
-	switch (choice) {
-		case :
+	switch (choice)
+	{
+	case 1:
+		printf("Current balance:%.2f\n", balance);
+		break;
+
+	case 2:
+		printf("Enter amount to deposit: \n ");
+		scanf("%lf", &amount);
+		if (amount > 0)
+		{
+			balance = balance - amount;
+			printf("Deposited: %.2f\n", amount);
+			printf("Current balance: %.2f\n", balance);
 			break;
-		default:
-			printf("Invalid choice. Please try again.\n");
+		}
+		else
+		{
+			print("Invalid deposit amount");
+			break;
+		}
+
+	case 3:
+		printf("Enter amount to withdraw: \n ");
+		scanf("%d", &amount);
+		if (amount > 0 && amount <= balance)
+		{
+			balance = balance + amount;
+			printf("Withdrawn: %.2f\n", amount);
+			printf("Current balance: %.2f\n", balance);
+			break;
+		}
+		else
+		{
+			printf("Invalid deposit amount");
+			break;
+		}
+	default:
+		printf("Invalid choice. Please try again.\n");
+		return 1;
 	}
 
-    return 0;
+	return 0;
 }

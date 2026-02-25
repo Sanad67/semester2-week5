@@ -28,10 +28,11 @@
  * - Print the converted amount based on the selected option.
  * - Print an error message for an invalid menu option.
  */
- 
+
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int choice;
     double amount, converted;
 
@@ -53,13 +54,25 @@ int main(void) {
     printf("Enter amount: ");
     scanf("%lf", &amount);
 
-	// Complete your code here
-    switch (choice) {
-        case :
-            break;
-        default:
-            printf("Invalid option\n");
+    // Complete your code here
+    switch (choice)
+    {
+    case 1:
+        amount = amount * USD_TO_EUR;
+        break;
+    case 2:
+        amount = amount * EUR_TO_USD;
+        break;
+    case 3:
+        amount = amount * USD_TO_GBP;
+        break;
+    case 4:
+        amount = amount * GBP_TO_USD;
+        break;
+    default:
+        printf("Invalid option\n");
+        return 1;
     }
-
+    printf("Result: %.2f\n", amount);
     return 0;
 }
